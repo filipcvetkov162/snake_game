@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        #gameContainer {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            border: 1px solid white;
+        }
+        #startButton, #retryButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #retryButton {
+            display: none;
+            background-color: red;
+        }
+        #title {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        #welcomeScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #welcomeButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #footer {
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        @keyframes gameOverAnimation {
+            0% { background-color: black; }
+            25% { background-color: red; }
+            50% { background-color: black; }
+            75% { background-color: red; }
+            100% { background-color: black; }
+        }
+        .game-over {
+            animation: gameOverAnimation 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcomeScreen">
+        <div id="title">Welcome to Snake Game</div>
+        <button id="welcomeButton">Start Game</button>
+        <div id="footer">2024 © ФИЛИП ЦВЕТКОВ</div>
+    </div>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <button id="startButton">СТАРТ</button>
+        <button id="retryButton">ОПИТАЙ ОТНОВО</button>
+    </div>
+    <script src="snake.js"></script>
+</body>
+</html>
