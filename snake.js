@@ -2,9 +2,11 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const startButton = document.getElementById("startButton");
 const retryButton = document.getElementById("retryButton");
+const resetButton = document.getElementById("resetButton");
 const welcomeButton = document.getElementById("welcomeButton");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const gameContainer = document.getElementById("gameContainer");
+const highScoreContainer = document.getElementById("highScoreContainer");
 
 const box = 20;
 let snake = [];
@@ -12,6 +14,7 @@ let food;
 let score;
 let d;
 let game;
+let highScore = localStorage.getItem("highScore") || 0;
 
 function initGame() {
     snake = [];
@@ -78,6 +81,11 @@ function draw() {
 
     if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
         clearInterval(game);
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("highScore", highScore);
+            highScoreContainer.textContent = `Рекорд: ${highScore}`;
+        }
         retryButton.style.display = "block";
         document.body.classList.add('game-over');
         return;
@@ -109,8 +117,17 @@ function startGame() {
 function showGameScreen() {
     welcomeScreen.style.display = "none";
     gameContainer.style.display = "flex";
+    highScoreContainer.textContent = `Рекорд: ${highScore}`;
+}
+
+function resetHighScore() {
+    highScore = 0;
+    localStorage.setItem("highScore", highScore);
+    highScoreContainer.textContent = `Рекорд: ${highScore}`;
+    alert("Рекордът е нулиран!");
 }
 
 welcomeButton.addEventListener("click", showGameScreen);
 startButton.addEventListener("click", startGame);
 retryButton.addEventListener("click", startGame);
+resetButton.addEventListener("click", resetHighScore);

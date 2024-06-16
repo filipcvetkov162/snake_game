@@ -22,7 +22,7 @@
         canvas {
             border: 1px solid white;
         }
-        #startButton, #retryButton {
+        #startButton, #retryButton, #resetButton {
             padding: 10px 20px;
             font-size: 16px;
             margin-top: 20px;
@@ -35,6 +35,9 @@
         #retryButton {
             display: none;
             background-color: red;
+        }
+        #resetButton {
+            background-color: orange;
         }
         #title {
             color: white;
@@ -70,6 +73,11 @@
         .game-over {
             animation: gameOverAnimation 1s infinite;
         }
+        #highScoreContainer {
+            color: white;
+            font-size: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -80,8 +88,10 @@
     </div>
     <div id="gameContainer">
         <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="highScoreContainer">Рекорд: 0</div>
         <button id="startButton">СТАРТ</button>
         <button id="retryButton">ОПИТАЙ ОТНОВО</button>
+        <button id="resetButton">Нулиране на рекорда</button>
     </div>
     <script src="snake.js"></script>
 </body>
