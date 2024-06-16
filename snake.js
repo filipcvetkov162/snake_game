@@ -7,6 +7,10 @@ const welcomeButton = document.getElementById("welcomeButton");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const gameContainer = document.getElementById("gameContainer");
 const highScoreContainer = document.getElementById("highScoreContainer");
+const leftButton = document.getElementById("leftButton");
+const upButton = document.getElementById("upButton");
+const rightButton = document.getElementById("rightButton");
+const downButton = document.getElementById("downButton");
 
 const box = 20;
 let snake = [];
@@ -29,15 +33,31 @@ function initGame() {
 }
 
 document.addEventListener("keydown", direction);
+leftButton.addEventListener("click", () => setDirection("LEFT"));
+upButton.addEventListener("click", () => setDirection("UP"));
+rightButton.addEventListener("click", () => setDirection("RIGHT"));
+downButton.addEventListener("click", () => setDirection("DOWN"));
 
 function direction(event) {
     if (event.keyCode == 37 && d != "RIGHT") {
-        d = "LEFT";
+        setDirection("LEFT");
     } else if (event.keyCode == 38 && d != "DOWN") {
-        d = "UP";
+        setDirection("UP");
     } else if (event.keyCode == 39 && d != "LEFT") {
-        d = "RIGHT";
+        setDirection("RIGHT");
     } else if (event.keyCode == 40 && d != "UP") {
+        setDirection("DOWN");
+    }
+}
+
+function setDirection(dir) {
+    if (dir == "LEFT" && d != "RIGHT") {
+        d = "LEFT";
+    } else if (dir == "UP" && d != "DOWN") {
+        d = "UP";
+    } else if (dir == "RIGHT" && d != "LEFT") {
+        d = "RIGHT";
+    } else if (dir == "DOWN" && d != "UP") {
         d = "DOWN";
     }
 }
