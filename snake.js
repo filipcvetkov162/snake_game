@@ -4,6 +4,9 @@ const startButton = document.getElementById("startButton");
 const retryButton = document.getElementById("retryButton");
 const resetButton = document.getElementById("resetButton");
 const welcomeButton = document.getElementById("welcomeButton");
+const aboutButton = document.getElementById("aboutButton");
+const closeModal = document.getElementById("closeModal");
+const aboutModal = document.getElementById("aboutModal");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const gameContainer = document.getElementById("gameContainer");
 const highScoreContainer = document.getElementById("highScoreContainer");
@@ -147,7 +150,22 @@ function resetHighScore() {
     alert("Рекордът е нулиран!");
 }
 
+function showAboutModal() {
+    aboutModal.style.display = "flex";
+}
+
+function closeAboutModal() {
+    aboutModal.style.display = "none";
+}
+
 welcomeButton.addEventListener("click", showGameScreen);
 startButton.addEventListener("click", startGame);
 retryButton.addEventListener("click", startGame);
 resetButton.addEventListener("click", resetHighScore);
+aboutButton.addEventListener("click", showAboutModal);
+closeModal.addEventListener("click", closeAboutModal);
+window.addEventListener("click", (event) => {
+    if (event.target == aboutModal) {
+        closeAboutModal();
+    }
+});
