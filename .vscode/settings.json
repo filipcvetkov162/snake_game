@@ -1,0 +1,5 @@
+{
+    "githubIssues.assignWhenWorking": true,
+    "githubPullRequests.notifications": "pullRequests",
+    "githubPullRequests.useReviewMode": "auto"
+}
